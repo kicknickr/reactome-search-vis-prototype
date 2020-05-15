@@ -1,0 +1,280 @@
+@use "~material-components-web/material-components-web";
+
+//@use "~@material/top-app-bar/mixins" as top-app-bar-mixins;
+
+//Fonts
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+//Material Icons for icons
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+/* Material Design Components Web CSS (Doesn't seem to be included in the individual @material/<comp> NPM modules
+@import "https://unpkg.com/material-components-web@5.1.0/dist/material-components-web.min.css"; */
+
+.app-root {
+  position: absolute;
+  height: 95vh;
+  width: 95vw;
+  margin: 2vh 2vw;
+}
+
+.editor-header {
+  position: absolute;
+  height: 10%;
+  width: 100%;
+}
+
+.editor-viewport {
+  position: absolute;
+  top: 10%;
+  height: 90%;
+  width: 100%;
+  outline: none;
+  overflow: hidden;
+}
+
+.search-pane {
+  position: absolute;
+}
+
+.search-pane-opened {
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.search-pane-closed {
+  z-index: -1;
+  pointer-events: none;
+}
+
+.simple-search-pane {
+  top: 10%;
+  height: 80%;
+  left: 5%;
+  min-width: 250px;
+  width: 20%;
+}
+
+.advanced-search-pane {
+  top: 10%;
+  height: 80%;
+  left: 60%;
+  min-width: 250px;
+  width: 40%;
+}
+
+//.search-pane-menu-surface > .mdc-top-app-bar {
+//  @include top-app-bar-mixins.fill-color(red);
+//}
+
+.search-pane-menu-surface {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  /* For some reason MDCMenuSurface elements are assigned a max-height for no apparent reason
+  and this conflicts with when we add resizing via interactjs*/
+  max-height: none !important;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.search-pane-body-area {
+  padding-left: 5%;
+  padding-right: 5%;
+  overflow: hidden;
+  height: 100%;
+  /*transition: all 2s;*/
+  display: flex;
+  flex-direction: column;
+}
+
+.pathway-simple-search-pane .search-pane-body-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pathway-advanced-search-pane .search-pane-body-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/*.pathway-search-pane-simple-search-area {*/
+/*    height: 100%;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    !*float: left;*!*/
+/*    !*width: 100%;*!*/
+/*    transition: all 2s;*/
+/*    !*width: 200px;*!*/
+/*    flex: 1 0;*/
+/*}*/
+
+
+/*.pathway-search-pane-advanced-search-area {*/
+/*    background: green;*/
+/*    height: 100%;*/
+/*    !*min-width: 50%;*!*/
+/*    !*width: 100%;*!*/
+/*    transition: all 2s;*/
+/*    transform: translate(-100%, 0);*/
+/*    !*float: left;*!*/
+
+/*    flex-shrink: 0;*/
+/*}*/
+
+
+
+.search-pane-search-results-list {
+  width: 100%;
+  overflow-y: scroll;
+  padding: 0;
+  flex-shrink: 1;
+}
+
+.search-pane-search-results-list .mdc-list-item__text{
+  min-width: 100px;
+}
+
+.adv-search-chip-set {
+  overflow-y: scroll;
+  max-height: 300px;
+}
+
+.adv-search-collapsible-sections-list-parent {
+  overflow-y: scroll;
+}
+
+.mdc-select-custom {
+  margin: 10px;
+}
+
+.full-width {
+  /*overflow: initial;*/
+  width: 100%;
+}
+
+.tab-bar-and-body {
+  flex: 1 1 auto;
+  /*overflow: hidden;*/
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.adv-search-footer {
+  flex: 0 0 50px;
+}
+
+.interaction-blocked {
+  pointer-events: none !important;
+  /*border: 2px solid red;*/
+  /*color: grey;*/
+  background: repeating-linear-gradient(
+                  45deg,
+                  aliceblue,
+                  aliceblue 10px,
+                  white 10px,
+                  white 20px
+  );
+  box-shadow: inset 0 0 5px lightslategray;
+  cursor: not-allowed;
+}
+
+.interaction-blocked *{
+  /*pointer-events: none !important;*/
+  opacity: 0.75;
+}
+
+.tab-body-unactivated {
+  display: none;
+}
+.PE-search-pane {
+  position: absolute;
+  top: 10%;
+  height: 90%;
+  left: 50%;
+  width: 20%;
+}
+
+.mdc-list-item__text span .highlighting {
+  font-weight: bold;
+}
+
+.renderable-node {
+  transform: translate(-50%, -50%);
+  max-width: 100px;
+  position: absolute;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.renderable-node-rounded {
+  border-radius: 5px;
+}
+
+.renderable-node-wo-inset {
+  padding: 5px;
+}
+
+.renderable-node > div {
+  font-size: 6px;
+  overflow-wrap: break-word;
+}
+
+.renderable-node-default {
+  border-color: grey;
+}
+
+.renderable-node-complex {
+  border-color: blue;
+  background-color: lightblue;
+}
+
+.renderable-node-protein {
+  border-color: teal;
+  background-color: turquoise;
+}
+
+.renderable-node-entity-set {
+  border-color: purple;
+  background-color: lightgray;
+}
+
+.renderable-node-entity, .renderable-node-chemical, .renderable-node-RNA {
+  border-color: darkgreen;
+  background-color: lightgreen;
+}
+
+.renderable-node-chemical {
+  border-radius: 20px / 10px;
+}
+
+.renderable-node-gene {
+  border-color: orange;
+  background-color: yellow;
+}
+
+.renderable-node-process-node {
+  border-color: darkgreen;
+  background-color: white;
+  padding: 10px;
+}
+
+.renderable-node-inset {
+  margin: 1px;
+  padding: 5px;
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: inherit;
+
+}
+
+.general-interactjs {
+  touch-action: none;
+  box-sizing: border-box;
+  user-select: none;
+}

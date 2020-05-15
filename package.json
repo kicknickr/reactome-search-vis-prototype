@@ -1,0 +1,47 @@
+{
+  "name": "reactomediagrameditor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "npm run jsdoc && npm run parcel-dev",
+    "build": "npm run jsdoc && npm run parcel-build",
+    "parcel-dev": "parcel serve -d ./dist src/index.html --global main",
+    "parcel-build": "parcel build -d build/ouput src/index.html --public-url ./",
+    "jsdoc": "rimraf ./docs/ && jsdoc -d ./docs -c ./jsdoc.json --verbose",
+    "eslint": "eslint 'src/**/*.js'"
+  },
+  "author": "Ryan Vereque",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.9.6",
+    "material-components-web": "^5.1.0",
+    "d3": "^5.16.0",
+    "d3-array": "^2.4.0",
+    "decko": "^1.2.0",
+    "easypz": "^1.1.8",
+    "fuse.js": "^3.6.1",
+    "interactjs": "^1.9.13",
+    "panzoom": "^9.2.4",
+    "request-promise-native": "^1.0.8",
+    "throttle-debounce": "^2.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@types/d3": "^5.7.2",
+    "babel-eslint": "^10.1.0",
+    "caniuse-lite": "^1.0.30001053",
+    "core-js": "^3.6.5",
+    "docdash": "^1.2.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-jsdoc": "^24.0.6",
+    "jsdoc": "^3.6.4",
+    "jsdoc-to-markdown": "^5.0.3",
+    "parcel": "^1.12.4",
+    "sass": "^1.26.5"
+  }
+}

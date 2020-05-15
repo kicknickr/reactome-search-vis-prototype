@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true}],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }],
+    ["@babel/transform-runtime"]
+  ],
+  "sourceMaps": "both",
+  "presets": [
+    ["@babel/preset-env", {
+      "useBuiltIns": "usage",
+      "corejs": 3
+    }]
+  ]
+}

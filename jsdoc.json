@@ -1,0 +1,15 @@
+{
+  "source": {
+    "include": ["src/"]
+  },
+  "opts": {
+    "recurse": true,
+    "package": "package.json",
+    "template": "node_modules/docdash"
+  },
+  "sourceType": "module",
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  }
+}
