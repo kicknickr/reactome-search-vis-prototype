@@ -10,6 +10,7 @@ import RenderableChemicalNode from "./RenderableChemicalNode";
 import RenderableProcessNodeNode from "./RenderableProcessNodeNode";
 import RenderableRNANode from "./RenderableRNANode";
 import RenderableGeneNode from "./RenderableGeneNode";
+import RenderableRLENode from "./RenderableRLENode";
 
 /**
  * Manages the state of diagram editor.
@@ -124,6 +125,11 @@ class DiagramEditorStateManager {
         const pathwayLayoutRaw = await ReactomeRequestProcessor.getPathwayDiagramLayout(stIdPathway);
         const {PEs, RLEs, miscLinkObjs} = this.reactomeRequestProcessor.rawPathwayLayout2diagObjs(pathwayLayoutRaw);
 
+        /** @type {Map<number, number>} */
+        const diagImportElemID2viewportElemID = new Map();
+        /** @type {Map<number, RenderableNode>} */
+        const viewportElemID2NodeComp = new Map();
+
         PEs.forEach((PE) => {
             const div = this.diagramEditorViewport.renderedHTMLContentContainer.append("div");
             const {x: newCanvasX, y: newCanvasY} = scaledXYValues(PE,
@@ -131,31 +137,118 @@ class DiagramEditorStateManager {
                 pathwayLayoutRaw.minX, pathwayLayoutRaw.maxX, pathwayLayoutRaw.minY, pathwayLayoutRaw.maxY,
                 0, this.diagramEditorViewport.diagramWidth, 0, this.diagramEditorViewport.diagramHeight);
 
-            const args = [div, this.renderableNodeIdCounter++, PE.displayName, PE.reactomeId, PE.rawSchemaClass, PE.rawRenderableClass,
+            const renderableNodeIdCounter = this.renderableNodeIdCounter++;
+            const args = [div, renderableNodeIdCounter, PE.displayName, PE.reactomeId, PE.rawSchemaClass, PE.rawRenderableClass,
                 newCanvasX, newCanvasY];
 
+            diagImportElemID2viewportElemID.set(PE.rawDiagramID, renderableNodeIdCounter)
+
+            let newDiagramNode = null;
             switch (PE.rawRenderableClass) {
                 case "Complex":
-                    return new RenderableComplexNode(...args);
+                    newDiagramNode = new RenderableComplexNode(...args);
+                    break;
                 case "EntitySet":
-                    return new RenderableEntitySetNode(...args);
+                    newDiagramNode = new RenderableEntitySetNode(...args);
+                    break;
                 case "Entity":
-                    return new RenderableEntityNode(...args);
+                    newDiagramNode =  new RenderableEntityNode(...args);
+                    break;
                 case "Protein":
-                    return new RenderableProteinNode(...args);
+                    newDiagramNode =  new RenderableProteinNode(...args);
+                    break;
                 case "Chemical":
-                    return new RenderableChemicalNode(...args);
+                    newDiagramNode =  new RenderableChemicalNode(...args);
+                    break;
                 case "RNA":
-                    return new RenderableRNANode(...args);
+                    newDiagramNode=  new RenderableRNANode(...args);
+                    break;
                 case "Gene":
-                    return new RenderableGeneNode(...args);
+                    newDiagramNode =  new RenderableGeneNode(...args);
+                    break;
                 case "ProcessNode":
                 case "EncapsulatedNode":
-                    return new RenderableProcessNodeNode(...args);
+                    newDiagramNode =  new RenderableProcessNodeNode(...args);
+                    break;
                 default:
-                    return new RenderableNode(...args);
+                    newDiagramNode = new RenderableNode(...args);
             }
+
+            viewportElemID2NodeComp.set(renderableNodeIdCounter, newDiagramNode);
         })
+
+        /** @type {Array<{reactionNodeID: number, relatedPEID: number, edgeType: string}>} */
+        const edgesData = [];
+
+        RLEs.forEach((RLE) => {
+            const div = this.diagramEditorViewport.renderedHTMLContentContainer.append("div");
+            const {x: newCanvasX, y: newCanvasY} = scaledXYValues(RLE,
+                (node) => node.initialX, (node) => node.initialY,
+                pathwayLayoutRaw.minX, pathwayLayoutRaw.maxX, pathwayLayoutRaw.minY, pathwayLayoutRaw.maxY,
+                0, this.diagramEditorViewport.diagramWidth, 0, this.diagramEditorViewport.diagramHeight);
+            // if (RLE.rawRenderableClass !== "Reaction") {
+            //     throw Error("New rawRenderableClass type found")
+            // }
+            //
+            // if (!new Set(["Reaction", "BlackBoxEvent", "Depolymerisation", "FailedReaction", "Polymerisation"]).has(RLE.rawSchemaClass)) {
+            //     throw Error("New rawSchemaClass type found")
+            // }
+            //
+            // if (RLE.reactionType) {
+            //     // console.log(RLE.reactionType);
+            //     if (!new Set(["Association", "Omitted Process"]).has(RLE.reactionType)) {
+            //         throw Error("New reactionType type found");
+            //     }
+            // }
+            const renderableNodeIdCounter = this.renderableNodeIdCounter++;
+
+            const args = [div, renderableNodeIdCounter, RLE.displayName, RLE.reactomeId, RLE.reactionType, RLE.rawSchemaClass, newCanvasX, newCanvasY];
+
+            RLE.inputs.forEach((importDiagIDRLEInput) => {
+                edgesData.push({reactionNodeID: renderableNodeIdCounter, relatedPEID: diagImportElemID2viewportElemID.get(importDiagIDRLEInput.id), edgeType: "RLEInput"})})
+            RLE.outputs.forEach((importDiagIDRLEOutput) => {
+                edgesData.push({reactionNodeID: renderableNodeIdCounter, relatedPEID: diagImportElemID2viewportElemID.get(importDiagIDRLEOutput.id), edgeType: "RLEOutput"})})
+            if (RLE.activators) {
+            RLE.activators.forEach((importDiagIDRLEActivator) => {
+                edgesData.push({reactionNodeID: renderableNodeIdCounter, relatedPEID: diagImportElemID2viewportElemID.get(importDiagIDRLEActivator.id), edgeType: "RLEOutput"})})
+            }
+            if (RLE.catalysts) {
+                RLE.catalysts.forEach((importDiagIDRLECatalyst) => {
+                edgesData.push({reactionNodeID: renderableNodeIdCounter, relatedPEID: diagImportElemID2viewportElemID.get(importDiagIDRLECatalyst.id), edgeType: "RLEOutput"})})
+            }
+
+            let newDiagramNode = null;
+            switch (RLE.rawSchemaClass) {
+                case "BlackBoxEvent":
+                    newDiagramNode = new RenderableRLENode(...args);
+                    break;
+                case "Polymerisation":
+                case "Depolymerisation":
+                    newDiagramNode = new RenderableRLENode(...args);
+                    break;
+                case "FailedReaction":
+                    newDiagramNode =  new RenderableRLENode(...args);
+                    break;
+                case "Reaction":
+                default:
+                    newDiagramNode =  new RenderableRLENode(...args);
+                    break;
+            }
+
+            viewportElemID2NodeComp.set(renderableNodeIdCounter, newDiagramNode);
+        })
+
+        const edgesSelection = this.diagramEditorViewport.renderedSVGContentContainer.append("g").attr("name", "edgeContainer")
+            .selectAll("line").data(edgesData)
+            .join("line")
+            .attr("stroke", "grey")
+            .attr("stroke-opacity", 0.3)
+            .attr("stroke-width", 3)
+            .attr("x1", d => viewportElemID2NodeComp.get(d.reactionNodeID).initialX)
+            .attr("y1", d => viewportElemID2NodeComp.get(d.reactionNodeID).initialY)
+            .attr("x2", d => viewportElemID2NodeComp.get(d.relatedPEID).initialX)
+            .attr("y2", d => viewportElemID2NodeComp.get(d.relatedPEID).initialY);
+
     }
 
 }

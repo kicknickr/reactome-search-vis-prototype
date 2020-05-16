@@ -263,6 +263,17 @@
   padding: 10px;
 }
 
+.renderable-node-RLE {
+  border-color: darkorange;
+  background-color: rgba(lightsalmon, 0.5);
+  //max-width: 50px;
+  //width: max-content;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 .renderable-node-inset {
   margin: 1px;
   padding: 5px;
