@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>PaneComponent - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdvancedSearchPresComponent.html">AdvancedSearchPresComponent</a><ul class='methods'><li data-type='method'><a href="AdvancedSearchPresComponent.html#getQueryParams">getQueryParams</a></li><li data-type='method'><a href="AdvancedSearchPresComponent.html#renderCollapsibleSectionsComp">renderCollapsibleSectionsComp</a></li><li data-type='method'><a href="AdvancedSearchPresComponent.html#renderRelationalSearchChooserComp">renderRelationalSearchChooserComp</a></li><li data-type='method'><a href="AdvancedSearchPresComponent.html#switchTab">switchTab</a></li></ul></li><li><a href="BaseSearchComponent.html">BaseSearchComponent</a><ul class='methods'><li data-type='method'><a href="BaseSearchComponent.html#destroy">destroy</a></li><li data-type='method'><a href="BaseSearchComponent.html#gatherQueryParameters">gatherQueryParameters</a></li><li data-type='method'><a href="BaseSearchComponent.html#getConstrainedRelationLiveResults">getConstrainedRelationLiveResults</a></li><li data-type='method'><a href="BaseSearchComponent.html#getPreliminaryLiveResults">getPreliminaryLiveResults</a></li><li data-type='method'><a href="BaseSearchComponent.html#handlePreliminaryResult">handlePreliminaryResult</a></li><li data-type='method'><a href="BaseSearchComponent.html#handlePreliminaryResults">handlePreliminaryResults</a></li><li data-type='method'><a href="BaseSearchComponent.html#makeQueryRequest">makeQueryRequest</a></li><li data-type='method'><a href="BaseSearchComponent.html#queryResult2liveResForm">queryResult2liveResForm</a></li><li data-type='method'><a href="BaseSearchComponent.html#updateQueryResults">updateQueryResults</a></li><li data-type='method'><a href="BaseSearchComponent.html#validateQueryParams">validateQueryParams</a></li></ul></li><li><a href="CollapsibleSectionsComp.html">CollapsibleSectionsComp</a></li><li><a href="CustomMDCChipSetComp.html">CustomMDCChipSetComp</a><ul class='methods'><li data-type='method'><a href="CustomMDCChipSetComp.html#getSelectedValues">getSelectedValues</a></li><li data-type='method'><a href="CustomMDCChipSetComp.html#setAllChipsSelected">setAllChipsSelected</a></li><li data-type='method'><a href="CustomMDCChipSetComp.html#toggleUserInteractionAllowed">toggleUserInteractionAllowed</a></li></ul></li><li><a href="DiagramEditorPage.html">DiagramEditorPage</a></li><li><a href="DiagramEditorStateManager.html">DiagramEditorStateManager</a><ul class='methods'><li data-type='method'><a href="DiagramEditorStateManager.html#generateNodeForPE">generateNodeForPE</a></li><li data-type='method'><a href="DiagramEditorStateManager.html#generateNodesForEntirePathwayImport">generateNodesForEntirePathwayImport</a></li></ul></li><li><a href="DiagramEditorViewport.html">DiagramEditorViewport</a><ul class='methods'><li data-type='method'><a href="DiagramEditorViewport.html#initCanvasForPathwayImport">initCanvasForPathwayImport</a></li></ul></li><li><a href="ISearchPresManager.html">ISearchPresManager</a><ul class='methods'><li data-type='method'><a href="ISearchPresManager.html#addResultToDisplay">addResultToDisplay</a></li><li data-type='method'><a href="ISearchPresManager.html#clearResultsDisplay">clearResultsDisplay</a></li><li data-type='method'><a href="ISearchPresManager.html#destroy">destroy</a></li><li data-type='method'><a href="ISearchPresManager.html#getAllUserQueryParams">getAllUserQueryParams</a></li><li data-type='method'><a href="ISearchPresManager.html#openDisplay">openDisplay</a></li><li data-type='method'><a href="ISearchPresManager.html#toggleAllQueryInput">toggleAllQueryInput</a></li></ul></li><li><a href="module-RenderableNode.html">RenderableNode</a></li><li><a href="NonPresentingEntitiesWithinComplexSearchComp.html">NonPresentingEntitiesWithinComplexSearchComp</a><ul class='methods'><li data-type='method'><a href="NonPresentingEntitiesWithinComplexSearchComp.html#destroy">destroy</a></li><li data-type='method'><a href="NonPresentingEntitiesWithinComplexSearchComp.html#gatherQueryParameters">gatherQueryParameters</a></li><li data-type='method'><a href="NonPresentingEntitiesWithinComplexSearchComp.html#getConstrainedRelationLiveResults">getConstrainedRelationLiveResults</a></li><li data-type='method'><a href="NonPresentingEntitiesWithinComplexSearchComp.html#getPreliminaryLiveResults">getPreliminaryLiveResults</a></li><li data-type='method'><a href="NonPresentingEntitiesWithinComplexSearchComp.html#handlePreliminaryResult">handlePreliminaryResult</a></li><li data-type='method'><a href="NonPresentingEntitiesWithinComplexSearchComp.html#handlePreliminaryResults">handlePreliminaryResults</a></li><li data-type='method'><a href="NonPresentingEntitiesWithinComplexSearchComp.html#makeQueryRequest">makeQueryRequest</a></li><li data-type='method'><a href="NonPresentingEntitiesWithinComplexSearchComp.html#queryResult2liveResForm">queryResult2liveResForm</a></li><li data-type='method'><a href="NonPresentingEntitiesWithinComplexSearchComp.html#updateQueryResults">updateQueryResults</a></li><li data-type='method'><a href="NonPresentingEntitiesWithinComplexSearchComp.html#validateQueryParams">validateQueryParams</a></li></ul></li><li><a href="NonPresentingPathwaysContainingEntrySearchComp.html">NonPresentingPathwaysContainingEntrySearchComp</a><ul class='methods'><li data-type='method'><a href="NonPresentingPathwaysContainingEntrySearchComp.html#destroy">destroy</a></li><li data-type='method'><a href="NonPresentingPathwaysContainingEntrySearchComp.html#gatherQueryParameters">gatherQueryParameters</a></li><li data-type='method'><a href="NonPresentingPathwaysContainingEntrySearchComp.html#getConstrainedRelationLiveResults">getConstrainedRelationLiveResults</a></li><li data-type='method'><a href="NonPresentingPathwaysContainingEntrySearchComp.html#getPreliminaryLiveResults">getPreliminaryLiveResults</a></li><li data-type='method'><a href="NonPresentingPathwaysContainingEntrySearchComp.html#handlePreliminaryResult">handlePreliminaryResult</a></li><li data-type='method'><a href="NonPresentingPathwaysContainingEntrySearchComp.html#handlePreliminaryResults">handlePreliminaryResults</a></li><li data-type='method'><a href="NonPresentingPathwaysContainingEntrySearchComp.html#makeQueryRequest">makeQueryRequest</a></li><li data-type='method'><a href="NonPresentingPathwaysContainingEntrySearchComp.html#queryResult2liveResForm">queryResult2liveResForm</a></li><li data-type='method'><a href="NonPresentingPathwaysContainingEntrySearchComp.html#updateQueryResults">updateQueryResults</a></li><li data-type='method'><a href="NonPresentingPathwaysContainingEntrySearchComp.html#validateQueryParams">validateQueryParams</a></li></ul></li><li><a href="PageSwitcher.html">PageSwitcher</a><ul class='methods'><li data-type='method'><a href="PageSwitcher.html#switchPage">switchPage</a></li></ul></li><li><a href="PaneComponent.html">PaneComponent</a><ul class='methods'><li data-type='method'><a href="PaneComponent.html#addActionButton">addActionButton</a></li><li data-type='method'><a href="PaneComponent.html#close">close</a></li><li data-type='method'><a href="PaneComponent.html#destroy">destroy</a></li><li data-type='method'><a href="PaneComponent.html#getAllowDragging">getAllowDragging</a></li><li data-type='method'><a href="PaneComponent.html#getPaneBodySel">getPaneBodySel</a></li><li data-type='method'><a href="PaneComponent.html#open">open</a></li><li data-type='method'><a href="PaneComponent.html#setAllowDragging">setAllowDragging</a></li></ul></li><li><a href="PresentingQueryBasedSearchComp.html">PresentingQueryBasedSearchComp</a><ul class='methods'><li data-type='method'><a href="PresentingQueryBasedSearchComp.html#.getReactomeFacetOptions">getReactomeFacetOptions</a></li><li data-type='method'><a href="PresentingQueryBasedSearchComp.html#destroy">destroy</a></li><li data-type='method'><a href="PresentingQueryBasedSearchComp.html#gatherQueryParameters">gatherQueryParameters</a></li><li data-type='method'><a href="PresentingQueryBasedSearchComp.html#getConstrainedRelationLiveResults">getConstrainedRelationLiveResults</a></li><li data-type='method'><a href="PresentingQueryBasedSearchComp.html#getPreliminaryLiveResults">getPreliminaryLiveResults</a></li><li data-type='method'><a href="PresentingQueryBasedSearchComp.html#handlePreliminaryResult">handlePreliminaryResult</a></li><li data-type='method'><a href="PresentingQueryBasedSearchComp.html#handlePreliminaryResults">handlePreliminaryResults</a></li><li data-type='method'><a href="PresentingQueryBasedSearchComp.html#makeQueryRequest">makeQueryRequest</a></li><li data-type='method'><a href="PresentingQueryBasedSearchComp.html#queryResult2liveResForm">queryResult2liveResForm</a></li><li data-type='method'><a href="PresentingQueryBasedSearchComp.html#setResultsConstraint">setResultsConstraint</a></li><li data-type='method'><a href="PresentingQueryBasedSearchComp.html#updateQueryResults">updateQueryResults</a></li><li data-type='method'><a href="PresentingQueryBasedSearchComp.html#validateQueryParams">validateQueryParams</a></li></ul></li><li><a href="QueryBasedSearchPresManager.html">QueryBasedSearchPresManager</a><ul class='methods'><li data-type='method'><a href="QueryBasedSearchPresManager.html#addResultToDisplay">addResultToDisplay</a></li><li data-type='method'><a href="QueryBasedSearchPresManager.html#clearResultsDisplay">clearResultsDisplay</a></li><li data-type='method'><a href="QueryBasedSearchPresManager.html#destroy">destroy</a></li><li data-type='method'><a href="QueryBasedSearchPresManager.html#getAllUserQueryParams">getAllUserQueryParams</a></li><li data-type='method'><a href="QueryBasedSearchPresManager.html#openDisplay">openDisplay</a></li><li data-type='method'><a href="QueryBasedSearchPresManager.html#toggleAllQueryInput">toggleAllQueryInput</a></li></ul></li><li><a href="ReactomeAPIQuerier.html">ReactomeAPIQuerier</a><ul class='methods'><li data-type='method'><a href="ReactomeAPIQuerier.html#.getDBEntryInfoRegular">getDBEntryInfoRegular</a></li><li data-type='method'><a href="ReactomeAPIQuerier.html#.getEntitiesWithinComplex">getEntitiesWithinComplex</a></li><li data-type='method'><a href="ReactomeAPIQuerier.html#.getEntrySearchResults">getEntrySearchResults</a></li><li data-type='method'><a href="ReactomeAPIQuerier.html#.getFacetTypes">getFacetTypes</a></li><li data-type='method'><a href="ReactomeAPIQuerier.html#.getLLDPathwaysContainingEntry">getLLDPathwaysContainingEntry</a></li><li data-type='method'><a href="ReactomeAPIQuerier.html#.getPathwayDiagramLayout">getPathwayDiagramLayout</a></li><li data-type='method'><a href="ReactomeAPIQuerier.html#.getPathwaysHavingDiagContainingEntry">getPathwaysHavingDiagContainingEntry</a></li></ul></li><li><a href="ReactomeRequestProcessor.html">ReactomeRequestProcessor</a><ul class='methods'><li data-type='method'><a href="ReactomeRequestProcessor.html#.getEntitiesWithinComplex">getEntitiesWithinComplex</a></li><li data-type='method'><a href="ReactomeRequestProcessor.html#.getEntrySearchResults">getEntrySearchResults</a></li><li data-type='method'><a href="ReactomeRequestProcessor.html#.getEntrySearchResultsFormatted">getEntrySearchResultsFormatted</a></li><li data-type='method'><a href="ReactomeRequestProcessor.html#.getHumanPathwayList">getHumanPathwayList</a></li><li data-type='method'><a href="ReactomeRequestProcessor.html#.getMapFacet2Types">getMapFacet2Types</a></li><li data-type='method'><a href="ReactomeRequestProcessor.html#.getPathwayDiagramLayout">getPathwayDiagramLayout</a></li><li data-type='method'><a href="ReactomeRequestProcessor.html#.getPathwaysHavingDiagContainingEntry">getPathwaysHavingDiagContainingEntry</a></li><li data-type='method'><a href="ReactomeRequestProcessor.html#getSampleDiagObj">getSampleDiagObj</a></li><li data-type='method'><a href="ReactomeRequestProcessor.html#rawPathwayLayout2diagObjs">rawPathwayLayout2diagObjs</a></li><li data-type='method'><a href="ReactomeRequestProcessor.html#searchForLLPathway">searchForLLPathway</a></li></ul></li><li><a href="SimpleSearchPresComponent.html">SimpleSearchPresComponent</a><ul class='methods'><li data-type='method'><a href="SimpleSearchPresComponent.html#toggleAllowUserSearchBarInput">toggleAllowUserSearchBarInput</a></li></ul></li><li><a href="TabBarComponent.html">TabBarComponent</a></li></ul><h3>Modules</h3><ul><li><a href="module-RenderableChemicalNode.html">RenderableChemicalNode</a></li><li><a href="module-RenderableComplexNode.html">RenderableComplexNode</a></li><li></li><li><a href="module-RenderableEntityNode.html">RenderableEntityNode</a></li><li><a href="module-RenderableEntitySetNode.html">RenderableEntitySetNode</a></li><li><a href="module-RenderableGeneNode.html">RenderableGeneNode</a></li><li><a href="module-RenderableNode.html">RenderableNode</a></li><li><a href="module-RenderableProcessNodeNode.html">RenderableProcessNodeNode</a></li><li></li><li><a href="module-RenderableRNANode.html">RenderableRNANode</a></li></ul><h3>Global</h3><ul><li><a href="global.html#advancedPaneTabTypes">advancedPaneTabTypes</a></li><li><a href="global.html#getTypeFacetOptionsForSearch">getTypeFacetOptionsForSearch</a></li><li><a href="global.html#resultsConstraintModeTypes">resultsConstraintModeTypes</a></li><li><a href="global.html#setup">setup</a></li><li><a href="global.html#subSearchTypes">subSearchTypes</a></li><li><a href="global.html#toggleSectionExpansion">toggleSectionExpansion</a></li><li><a href="global.html#validRelationSubSearchTypes">validRelationSubSearchTypes</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">PaneComponent</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        PaneComponent
+        </h2>
+        
+            <div class="class-description usertext">A generic "pane" or "window" type component. Includes presentation and functionality for dragging and resizing.</div>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="PaneComponent"><span class="type-signature"></span>new PaneComponent<span class="signature">(containerElem, paneTitle, anchorElemStyleClass)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line48">line 48</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>containerElem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">d3.Selection</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The parent elem of anything children this class creates</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>paneTitle</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Name display centrally on the header of the pane</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>anchorElemStyleClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Name of the css class that will applied to the anchor elem.
+The css class may include rules that specify the initial position and size information.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="headerRightSection"><span class="type-signature"></span>headerRightSection<span class="type-signature"> :d3.Selection</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Element for the "end" section within the MDC top app bar
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">d3.Selection</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="isDragButtonHoveredOverQ"><span class="type-signature"></span>isDragButtonHoveredOverQ<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Whether or not the user is hovering over the drag button of the pane
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="isOpenQ"><span class="type-signature"></span>isOpenQ<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Whether the pane is in an open state (visible) or not
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="isPinnedQ"><span class="type-signature"></span>isPinnedQ<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Whether or not the Pane is a 'pinned' state meaning whether click outside will close it or not
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="menuAnchor"><span class="type-signature"></span>menuAnchor<span class="type-signature"> :d3.Selection</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    parent elem of the menu surface
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">d3.Selection</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="menuSurfaceComp"><span class="type-signature"></span>menuSurfaceComp<span class="type-signature"> :MDCMenuSurface</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    The MDC component for the menu surface comprising the pane
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">MDCMenuSurface</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="paneBodySel"><span class="type-signature"></span>paneBodySel<span class="type-signature"> :d3.Selection</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Element with the contents of the pane
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">d3.Selection</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="addActionButton"><span class="type-signature"></span>addActionButton<span class="signature">(matIconName, callbackFunc)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line126">line 126</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Add an "action button" on the right-side of the pane and give it functionality
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>matIconName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The mdc-icon name for the button's icon.
+Of the button's icon can be changed later via the on-click callback function since it will have access
+to the button's element</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callbackFunc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PaneComponent.html#~buttonClickCb">PaneComponent~buttonClickCb</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><a href="PaneComponent.html#~buttonClickCb">PaneComponent~buttonClickCb</a></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="close"><span class="type-signature"></span>close<span class="signature">(force)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line156">line 156</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Close the pane (without destroying/modifying its contents).
+But first change styling in addition to the automatic style changes triggered by MDCMenuSurface.close
+and set it to non-pinned by convention (functionally not important)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>force</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    <code>false</code>
+                
+                </td>
+            
+
+            <td class="description last">skip check to see if menu is open first</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="destroy"><span class="type-signature"></span>destroy<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line113">line 113</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Destroy the pane's dom and components. If other components used dom within this dom, then they
+should be destroyed too separately
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getAllowDragging"><span class="type-signature"></span>getAllowDragging<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line199">line 199</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Returns whether dragging is allowed
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getPaneBodySel"><span class="type-signature"></span>getPaneBodySel<span class="signature">()</span><span class="type-signature"> &rarr; {d3.Selection}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line137">line 137</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <a href="PaneComponent.html#paneBodySel">PaneComponent#paneBodySel</a> . Used by other classes to populate its contents
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">d3.Selection</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="open"><span class="type-signature"></span>open<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line170">line 170</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Open the pane (contents have not been modified since last opened).
+But first remove additional "close" styling @see PaneComponent.close
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setAllowDragging"><span class="type-signature"></span>setAllowDragging<span class="signature">(allowedQ)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line184">line 184</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Sets whether or not dragging is enabled for the pane (drag can be initiated by drag-clicking anywhere on the pane)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>allowedQ</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+
+    
+
+    <h4 class="name" id="~buttonClickCb"><span class="type-signature"></span>buttonClickCb<span class="signature">(elem)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PaneComponent.js.html">PaneComponent.js</a>, <a href="PaneComponent.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Gets called when a button is clicked. May also be responsible for updating a button's icon.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">d3.Selection</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The element of the button itself</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    void
+</div>
+
+
+
+    
+
+
+
+            
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Sun May 17 2020 02:21:54 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
