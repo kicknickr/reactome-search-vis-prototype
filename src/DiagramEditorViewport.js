@@ -71,9 +71,9 @@ class DiagramEditorViewport {
         this.pathwaySearchComp.presManager.openDisplay();
     }
 
-    displayPEPane() {
-        // this.pathwaySearchComp.pathwayAdvancedSearchPaneComponent.open();
-    }
+    // displayPEPane() {
+    //     // this.pathwaySearchComp.pathwayAdvancedSearchPaneComponent.open();
+    // }
 
     cleanCanvas() {
         if (this.renderedSVGContentContainer) this.renderedSVGContentContainer.selectAll("*").remove();
@@ -85,18 +85,19 @@ class DiagramEditorViewport {
             /** @type {Array<{text: string, iconName: ?string, onClick: function()}>} */
             const textIconAction = [
                 {
-                    text: "Open Pathway Search Pane",
+                    text: "Open Search Pane",
                     // iconName: "play_arrow",
                     onClick: () => {
                         this.displayPathwayPane();
                     }
                 },
-                {
-                    text: "Open Physical Entity Search Pane",
-                    onClick: () => {
-                        this.displayPEPane();
-                    }
-                }];
+                // {
+                //     text: "Open Physical Entity Search Pane",
+                //     onClick: () => {
+                //         this.displayPEPane();
+                //     }
+                // }
+                ];
             if (!this.toolTipMenuSurfaceComp) {
                 this.toolTipMenuSurfaceComp = generateContextMenu(this.toolTipContainerElem, textIconAction);
             }

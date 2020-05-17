@@ -1,0 +1,508 @@
+% Have fun and good luck with the thesis.
+%
+%
+%  Andreas Koeller (koeller@wpi.edu)
+%
+%
+%
+
+% The preamble
+%
+%
+% 12 point font, and your thesis is a ``report'' to LaTeX
+\documentclass[12pt]{report}
+
+% this enables correct linespacing and graphics inclusion via 
+%``\includegraphics''
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+%
+\usepackage{pdfpages}
+\usepackage[toc,page]{appendix}
+\usepackage{hyperref}
+\usepackage{todonotes}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{subfigure}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]   
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-50pt}{40pt}
+
+
+% leave 1.5in margin to the left and 1in margin to the other
+% sides. Don't print page number in the margin (but rather above it)
+\setlength{\textheight}{8.63in}
+\setlength{\textwidth}{5.9in}
+\setlength{\topmargin}{-0.2in}
+\setlength{\oddsidemargin}{0.3in}
+\setlength{\evensidemargin}{0.3in}
+\setlength{\headsep}{0.0in}
+
+
+
+% Start 
+% =================================================
+\begin{document}
+	
+%forces some specially formatted text to wrap to the next line if it overfills h-box
+\sloppy
+
+% First things first: The Titlepage
+% This is the recommended format by the library
+%
+
+
+% Define \brk as a command for leaving a little vertical space. Makes
+% the titlepage easier to read - normally, this is NOT GOOD LATEX
+% STYLE!!!
+%
+\newcommand{\brk}{\vspace*{0.18in}}
+
+% No page number on the title page
+\thispagestyle{empty}
+
+% Center the whole title page
+\begin{center}
+
+\brk
+
+% Large font and bold face for the headline. Try to keep it at one or
+% two lines. Headlines over two lines will mess up the spacing, and you have to
+% manually finetune it. Note that the line break in the SOURCE CODE
+% does not affect the line breaking in the output file. If you want
+% hardcoded line breaks, you have to mark them with a double backslash (\\)
+
+   {\large 
+	\textbf{
+	 Reactome Advanced Knowledgebase Search and Pathway Visualization Prototype App
+	}
+   }
+
+
+\brk
+by
+
+\brk
+% insert your name here. 
+Ryan Vereque
+
+% All this is constant:
+\brk\brk
+A Major Qualifying Project
+
+\brk
+Submitted to the Faculty
+
+\brk
+of the 
+
+\brk
+WORCESTER POLYTECHNIC INSTITUTE
+	
+\brk
+In partial fulfillment of the requirements for the
+
+\brk
+Degree of Bachelor of Science
+
+\brk
+in Computer Science
+
+\brk
+
+
+\brk
+by
+
+% This is how LaTeX draws lines :) It's where your signature goes.
+\brk\brk
+\rule{3in}{1.2pt}
+
+% Adjust this to your preferred month and year
+\brk
+May 2020
+
+\end{center}
+
+	
+\vfill
+APPROVED:
+
+\vspace{0.5in}
+\rule{3in}{0.8pt}
+
+% Change this 
+Smith, Therese
+
+% end of titlepage
+\newpage
+
+% This is the command for doublespacing when you use the setspace
+% package
+% Please do NOT use \baselinestretch, this will mess up everything,
+% cause earthquakes, tornados and lots of questions for me...
+% If you need a singlespaced paragraph (BAD STYLE!!!), use
+% \singlespacing or \onehalfspacing and enclose it together with the
+% paragraph in braces {\singlespacing This is my text... blah blah blah}
+%
+\doublespacing
+
+
+\begin{abstract}
+The goal of this project is to prototype an app that allows users to search and visualize the Reactome knowledgebase. The Reactome ontology contains biological pathways, their components, and interactions. The app allows the user to construct search criteria across multiple ontological concepts and their specific relationships, whereas existing Reactome search tools cannot. The app also re-creates pathway visualizations. This work could serve as a basis for visualizing these pathways in custom use cases not met by the official tools. 
+\end{abstract}
+
+% Roman page numbers for front matter
+
+\pagenumbering{roman} % or {Roman} if you like them capitalized
+
+% The next thing is the Preface (``Acknowledgements'').
+% No standard environment for that, so we'll format it by hand.
+%
+%\begin{center}
+%	\textbf{Acknowledgements}
+%\end{center}
+
+%@@ your acks
+
+\clearpage
+
+
+% Now comes the Table of Contents, really easy in LaTeX. you never
+% have to worried about it. (Think of all the hours you would
+% have wasted in Word getting this thing updated without crashing
+% the system) :).
+
+\tableofcontents
+
+% List of Figures if any.
+% This will catch all objects enclosed in \begin{figure}\end{figure}
+% statements.
+\listoffigures
+
+% List of tables, if any.
+% This will catch all objects enclosed in \begin{table}\end{table}
+% statements.
+%\listoftables
+
+
+% Separation between front matterand text
+
+\clearpage
+
+%  Arabic numbering for the main text
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% 
+% Since this is a ``report'', the topmost level of hierarchy is
+% ``Chapter'', not section as you may be used to. Chapters are
+% enumerated starting from 1, so Sections are 1.1, Subsections are
+% 1.1.1, subsubsections don't get numbers. (You can change that, if
+% you want them to be called 1.1.1.1)
+%
+
+%@@ your text!
+% In case you want to put the actual body prose into a different file
+% \input{filename}
+
+\chapter{Problem Description}
+\label{ch:Problem Description}
+
+Reactome is a knowledgebase specializing in biomolecular pathways \cite{FabregatAntonio2018RgdE}. The Reactome project also provide a variety of bioinformatics tools including but not limited to a full-text search tool \cite{FabregatA.2016Trpk}, an API for programmatic access to the knowledgebase \cite{ContentServiceGeneralDescription}, and a pathway diagram viewer \cite{PathwayDiagramsSpecifications}.
+
+Searching the Reactome knowledgebase using the available tools for entries that relate to another set of entries via specific ontological relationships can be a laborious task when additional search criteria is placed on either set of entries. If a search task involves identifying a set of entries that are further ontologically related to the results of the previous task, then the number of search queries and manual involvement required quickly grows unreasonable without automation. These search-related limitations of the existing set of tools is addressed in the prototype app developed for this project.
+
+Furthermore, Reactome's pathway diagram viewer does not feature the ability to have a user modify a pathway's contents or stylize them in any customized manner. The prototype app in this project aims to reproduce some of the visual contents from the existing pathway viewer, and in doing so will address challenges associated with gathering and processing diagram data that would be needed for implementing a new and enhanced pathway diagram viewer.
+
+\chapter{Related Work}
+The Reactome knowledgebase follows a formal data schema \cite{VastrikImre2007Rakb} than can be interpreted as an ontology. This ontology delineates concepts including chemical reactions, genes and their products, cell compartments, diseases, and pathways and their regulation, among other things \cite{DataModelGeneralDescription, GraphDatabaseDataSchema}.
+
+\section{Existing Reactome Search Tools}
+The full-text search tool provided by Reactome allows the user to search for entries in the knowledgebase by specifying a search string and selecting any number of options for facets \cite{FabregatA.2016Trpk}. Some examples of these facets include a general category of ontological concepts the entry belongs to, the compartment within a cell that the entry is associated with, the species that the entry is associated with, and a set of predefined keywords it is associated with.
+
+The search functionality provided by this existing Reactome tool is useful for a variety of use cases, but is lacking in some respects. Many use cases for searching the Reactome knowledgebase may require the ability to explore entries that are ontologically related by some specific concept to a first entry. One such realistic use case is a user wanting to search for pathways that contain a given gene product and that also meet a certain search string. To find entries that are associated with another (set of) entr(ies) in a specific ontological relationship is not possible through the aforementioned full-text search tool.
+
+There are other less user-friendly tools provided by Reactome that may partially aid a user with these kinds of use cases. One such tool is the Content Service API which can find entries that are related to a single entry for a certain limited set of relationships, including the relationship that would be relevant for finding pathways that contain a gene product \cite{DataModelGeneralDescription}. However, further filtering this set of pathway entries with a search-string is non-trivial because this set of results would have to be intersected with a set of results from the a full-text search in highly manual process.
+
+As the use case increases in complexity, the benefits of automating this process become clearer. Consider a use case where the user wants to search for all pathways that contain any of the reactions from a given initial pathway. This would require one use of the API to find reactions contained in the given pathway, then another use of the API for each reaction to find the pathways that contain that reaction \cite {ContentServiceAPIDocumentation}. The search process would be even more complex if either these intermediate reactions or the final pathways needed to satisfy criteria about what species or cell compartment they exist in. While these searches queries could be fulfilled by directly querying Reactome's publicly available relational or graph databases, the technical knowledge of syntax required for forming these queries, along with it taking place outside the web browser, limits its target audience as a search tool.
+
+\section{Existing Pathway Diagram Viewer Tool}
+Another tool provided by the Reactome project is the pathway diagram viewer which displays curated visualizations of pathways \cite{PathwayDiagramsSpecifications}. These diagrams represent networks of reactions including their inputs, outputs, catalysts, and other related concepts each represented with their own node in the diagram. The reactions in these diagrams are all of the ontological concept ``Reaction-Like-Event'' (RLE). A RLE is represented via ``edges'' with multiple tails connected to instances of its previously mentioned related concepts. Not all possible ontological relationships and entries are included in a pathway diagram, instead the diagram mostly consists of RLEs and their constituent Physical Entities (PEs). These diagrams also feature interactivity including the ability to view more information on a selected visual element and search for elements within a diagram using a search string \cite {FabregatAntonio2018RgdE}. It should also be noted that there is a distinction between detailed pathway diagrams (which are also dubbed as ``low-level'' diagrams in the API documentation) and enhanced high-level diagrams (EHLD) \cite{ThePathwayBrowserGeneralDescription, ContentServiceAPIDocumentation}.
+
+These diagrams do not, however, allow elements to be re-positioned, included, or excluded. It also does not allow the customization of visual styles used for different diagram elements. These claims are evidenced by that fact of there being no mention to such features in the collection of papers published by the Reactome project under their regular naming convention of ``The reactome pathway knowledgebase'' \cite{CroftDavid2014TRpk, FabregatA.2016Trpk, FabregatAntonio2018TRPK, JassalB.2020Trpk} and in the latest pathway diagram focused paper \cite{FabregatAntonio2018Rdvd} which collectively go back 2014. This dates back some time before the last major version release (version 3) of the pathway diagram viewer in 2015 \cite{FabregatA.2016Trpk}. It also evidenced by no mention in pathway diagram related documentation \cite{ThePathwayBrowserGeneralDescription, PathwayDiagramsSpecifications}. One use case where such functionality may be useful is where a user wishes to create an alternative interpretation of what reactions are relevant to a given biological pathway. While this use case is beyond the scope of the prototype app, it could theoretically involve the user starting from an existing diagram and then including searched-for RLEs that connect to Physical Entities already present in the diagram, extending the network.
+
+\section{How this Project Builds upon Existing Work}
+Developing the aforementioned desirable features in a piece of software may require several iterations of design. To make progress towards this goal, a prototype web app was created in this project. It implements a UI with some relational search features and some underlying logic necessary for future pathway diagram features.
+
+This prototype app is not hosted on a web-server publicly accessible on the web. The source-code is available, however, and the app may be hosted locally. The source-code may be found at:
+
+\noindent\url{https://github.com/kicknickr/reactome-search-vis-prototype}
+
+See appendix chapter \ref{ch:App Source Code} for more information.
+%get this using the Gordon Library research librarians as one resource also include references from Grier Wallace
+%\chapter {Statement of Work}
+\chapter{Overall Design}
+%\section {Overview of Design}
+%The app created in this project is a web app that leverages Reactome's Content Service API.
+\section {Development Environment and Utilized Packages}
+The development environment for this web app is reliant upon Node.js (Node). Node is ``an asynchronous, event-driven JavaScript runtime that offers a powerful but concise standard library''. It is has a built-in package manager named NPM which allows for the inclusion of publicly accessible packages into a node project \cite{NodeJSInAction}.
+
+Notable packages that provide additional context to the app's development, without significantly influencing import design choices, include Babel and Parcel. ``Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments'' including the features to transform syntax, polyfill features that are missing in your target environment, and perform source code transformations \cite {BabelDocumentation}. Parcel is an asset-bundler for web apps with many automatically configured features for optimization and supports JavaScript transformers and transpilers such as Babel \cite{ParcelDocumentation}.
+
+Some notable packages aiding the construction of the UI and its logic include D3.js (D3) version 5 and Material Web Components version 5. D3 ``is a JavaScript library for manipulating documents based on data'' \cite{D3HomePage}. Material Web Components is package designed for web apps that wish to execute Material Design, a UI design system developed by Google \cite{MaterialComponentsWebGithub}. ``Material is an adaptable system of guidelines, components, and tools that support the best practices of user interface design'' \cite{MaterialDesignPhilosophy}. The Material Design system was not strictly executed in this project's app, however UI components provided by the package where utilized wherever possible. Aside from the pathway diagram viewer portion of the UI, the remainder of the app has a look and feel that could be primarily associated with Material Design.
+
+\section {General User Interface Layout}
+The web app divides the screen space in two. A large and central pathway diagram viewport, and a header containing access to general information \todo{Update}. Upon the user initiating a context menu on empty space within the viewport, this new menu gives the user a choice to open a search pane. This search pane allows a user to construct search criteria for entries in the knowledgebase.
+
+\section {User Interface and Features}
+
+\subsection{App Header}
+\todo{talk about header}
+
+\subsection{Pathway Diagram Viewer}
+The app's diagram viewport is where a rough re-creation of any Reactome pathway that has a low-level diagram can be displayed. Figure \ref{fig:DiagramForDNASynth} shows the app's recreation of pathway R-HSA-69239 or ``Synthesis of DNA''. The app's diagram differs from the existing Reactome pathway diagram viewer (Figure \ref{fig:ReactomesDiagramForDNASynth}) in a few key ways. Firstly, RLEs are represented with their own nodes, rather than by multi-tailed edges. Edges now represent a link between a RLE and just one of its constituent PEs, rather than representing an entire RLE itself. These new edges do not denote in what way a PE contributes do a given RLE. Secondly, groupings of diagram elements denoted by shadows, seen as translucent boxes, featured in the existing diagram viewer have not been implemented in this app, although it should be noted the data for their positions was found to exist in the API. Thirdly, this app features no interactivity with diagram elements. The two diagram viewers do, however, share some features. Notably including similar styling for PE nodes, the same relative locations for elements in the diagram, and the ability to zoom and pan through the viewport.
+\newpage
+
+\begin{figure}[t!]
+	\begin{center}
+		\includegraphics[width=1\columnwidth]{FigureImages/"Screenshot from 2020-05-16 14-03-56".png}
+	\end{center}
+	\caption{Pathway diagram viewer opened to pathway R-HSA-69239, known as ``Synthesis of DNA''}
+
+	\label{fig:DiagramForDNASynth}
+\end{figure}
+
+\begin{figure}[b!]
+	\begin{center}
+		\includegraphics[width=1\columnwidth]{FigureImages/"Screenshot from 2020-05-16 14-58-31".png}
+	\end{center}
+	\caption{Reactome's pathway diagram viewer opened to same pathway as figure \ref{fig:DiagramForDNASynth}}
+	
+	\label{fig:ReactomesDiagramForDNASynth}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h]
+	\begin{center}
+		\subfigure[This project's app]{
+			\includegraphics[width=0.4\columnwidth, height=0.4\columnwidth]{FigureImages/"Screenshot from 2020-05-16 14-04-53".png}
+		}
+		\subfigure[Reactome's existing tool]{
+			\includegraphics[width=0.4\columnwidth, height=0.4\columnwidth]{FigureImages/"Screenshot from 2020-05-16 15-10-59".png}
+		}
+	\end{center}
+	\caption{A side-by-side comparison between closeups of pathway diagram viewers from this project's app and Reactome's existing tools. The portion of pathway being displayed is from the same pathway as figures \ref{fig:DiagramForDNASynth} and \ref{fig:ReactomesDiagramForDNASynth}}
+	
+	\label{fig:ReactomeVsProjectVisualComparison}
+\end{figure}
+\newpage
+
+\subsection{Search Feature}
+The search pane appears as a window that can be re-positioned, resized, closed, and pinned. Through user interaction in the search pane, more search panes may be produced for further refining search criteria and for specifying relational search criteria. The simple search pane can be accessed via a context menu on the diagram viewport (see Figure \ref{fig:ContextMenuOpened}). The simple search pane serves two functions. To specify a search string, and to view a list of results for the search. To expedite debugging and testing of the simple search pane, a hard limit of 100 entry search results are accepted from queries to the Reactome API.
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.5\columnwidth]{FigureImages/"Screenshot from 2020-05-16 14-10-29".png}
+	\end{center}
+	\caption{The same closeup from Figure \ref{fig:ReactomeVsProjectVisualComparison} of this project's pathway diagram viewer, but with a context menu having been opened on empty space}
+	\label{fig:ContextMenuOpened}
+\end{figure}
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=1\columnwidth]{FigureImages/"Screenshot from 2020-05-16 14-12-07".png}
+	\end{center}
+	\caption{The simple search pane appears once the ``Open Pane'' option has been selected}
+	\label{fig:SimpleSearchPaneAppears}
+\end{figure}
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=1\columnwidth]{FigureImages/"Screenshot from 2020-05-16 14-12-57".png}
+	\end{center}
+	\caption{Search panes can be resized and dragged}
+	\label{fig:PaneResizeAndDrag}
+\end{figure}
+\newpage
+
+From the simple search pane, a button to open the advanced search pane is available. The advanced search pane provides two mechanisms which work simultaneously for further constructing search criteria.
+
+The first mechanism appears on the advanced search pane's ``Query Filters'' tab. This tab allows the selection of options from multiple search facet categories. This tab, along with the simple search pane, replicates the functionality of the existing Reactome full-text search tool. For examples of a multi-choice selection of facet options from a set of different facet categories, one may see them featured in the product search interface for many online shopping websites. For each category of facet, the user may select any number of options. If none are selected, no additional search criteria are imposed. If one or more options are selected, the returned search results must belong to one of the selected options. Search results must satisfy this for all categories of facets, and not just any of them. The categories of facets implemented include: ontological concept category (displayed as ``Type''), associated species, associated cell compartment, and associated predefined keywords.
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.7\columnwidth]{FigureImages/"Screenshot from 2020-05-16 14-14-15".png}
+	\end{center}
+	\caption{The initial state of the advanced search pane and its ``Query Filters'' tab}
+	\label{fig:AdvancedSearchInitial}
+\end{figure}
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.7\columnwidth]{FigureImages/"Screenshot from 2020-05-16 14-14-31".png}
+	\end{center}
+	\caption{The facet category for ontological type has had the ``Pathway'' option chosen}
+	\label{fig:AdvancedSearchPathwayFacetOptionChosen}
+\end{figure}
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.5\columnwidth]{FigureImages/"Screenshot from 2020-05-16 14-14-57".png}
+	\end{center}
+	\caption{Facets categories can be expanded/contracted and scrolled-through}
+	\label{fig:AdvancedSearchFacetExpandAndScroll}
+\end{figure}
+
+\newpage
+
+The second mechanism appears on the ``Relational Filters'' tab (see Figure \ref{fig:RelationalFiltersTabInitial}). The functionality on this tab and the functionality provided by the additional UI components that it generates is not available in the existing Reactome search tools with UI. It constitutes the bulk of this project's contribution to advancing search functionality for Reactome's knowledgebase. This tab provides the ability for a set of search result entries returned from the current search pane's criteria to be further narrowed down by whether they satisfy a specified ontological relationship with one of the search results from another search pane.
+
+\newpage
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.5\columnwidth]{FigureImages/"Screenshot from 2020-05-16 14-16-00".png}
+	\end{center}
+	\caption{The initial state of the ``Relational Filters'' tab}
+	\label{fig:RelationalFiltersTabInitial}
+\end{figure}
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.5\columnwidth]{FigureImages/"Screenshot from 2020-05-16 14-16-43".png}
+	\end{center}
+	\caption{Ontological relationship filter options}
+	\label{fig:OntologicalRelationshipFilterOptions}
+\end{figure}
+
+\newpage
+
+On this tab, there is a drop-down menu for selecting an ontological relationship, shown in Figure \ref{fig:OntologicalRelationshipFilterOptions}. There is also a radio button set for selecting whether the new set of results have to satisfy the relational search criteria, the original criteria sans relations, or both. The following search logic will be described under the assumption that the both option (``Intersection'' option in the actual app's UI) is selected. Upon making appropriate selections to these two fields, a second set of search panes is created (see Figure \ref{fig:RelationalFilterNewPanes}). The new intersected search results are displayed in the first simple search pane and must now have a specified ontological relationship with one selected entry from the second simple search pane (see Figure \ref{fig:RelationalFilterInAction}). It should be noted the because of a entry result size limitation discussed previously, this intersection of results is also similarly incomplete.  Furthermore, this second set of search panes may further refine their search results by also using their own ``Relational Filters'' tab, thereby producing a third set of panes, and etc.
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=1\columnwidth]{FigureImages/"Screenshot from 2020-05-16 14-18-44".png}
+	\end{center}
+	\caption{A second set of search panes has opened from the chosen relational filter. These search panes have been re-positioned within the diagram for visual clarity. The two panes on the right are the originals, and the two panes of the left have just been created. Notice that in the new advanced search pane, several type facet options have had their selection disabled, while the remainder have been selected by default. Different facet options are disabled according to their compatibility with the chosen relational filter.}
+	\label{fig:RelationalFilterNewPanes}
+\end{figure}
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=1\columnwidth]{FigureImages/"Screenshot from 2020-05-16 14-23-46".png}
+	\end{center}
+	\caption{An example of the relational search filter in action. A summarization of important search criteria for the displayed search could be ``Human pathways containing the search-string ``tumor'' that contain the selected DNA Sequence ``TP53 gene''''. The results of this search are displayed in the first (right-side) simple search pane. The first of these two pathway results was selected and then became displayed in the pathway diagram viewer.}
+	\label{fig:RelationalFilterInAction}
+\end{figure}
+
+This relational searching feature allows users to build a non-branching chain of search queries. Each step in the chain represents finding the set of knowledgebase entries which satisfy a specified ontological relationship with a single selected entry found in the previous step. Previously existing non-relational search functionality (via the ``Query Filters'' tab), is also specifiable at each step in the chain. As previously mentioned, both search criteria mechanisms operate simultaneously.
+
+In this prototype app, only two ontological relationships are implemented (see Figure \ref{fig:OntologicalRelationshipFilterOptions}). The filtering mechanism and UI logic is independent of search results. Implementing additional relational filters for the search pane will only require new logic for how the Content Service API can be leveraged to gather all entries that have the desired relationship to a single given entry.
+
+\section {Data Structures and Algorithms}
+The only external web requests this app produces are those to Reactome's Content Service API. To make these calls, the \verb|ReactomeAPIQuerier| and \verb|ReactomeRequestProcessor| classes exist. Each of \verb|ReactomeAPIQuerier|'s methods point to a unique end point in the API and transform parameters that are supplied programmatically into parameters formatted to be understood by the API. The \verb|ReactomeRequestProcessor| manages the logic of caching some requests and formatting results in a way that is most usable by other classes concerned with search mechanism logic.
+
+The \verb|ISearchPresManager| class acts as an interface for classes responsible for bridging the gap between UI logic and search mechanism logic. For example, the \verb|PaneComponent| class, responsible for a search pane's window-like features, and the \verb|CustomMDCChipSetComp|, responsible for the facet option selection chips, do not talk directly with implementations of the \verb|BaseSearchComponent| class. This interface has methods for displaying/clearing result data, enabling/disabling the ability to select search criteria including individual facet options, and gathering user-entered search criteria, among other things.
+
+The \verb|BaseSearchComponent| is an abstract base class that outlines the logic of a single search and the general approach for how other searches may narrow and expand its result set. Implementations of \verb|BaseSearchComponent|, such as \verb|PresentingQueryBasedSearchComp|, may instantiate more implementations of \verb|BaseSearchComponent|. When a user selects an ontological relationship in the ``Relational Filters'' tab, \verb|PresentingQueryBasedSearchComp| must instantiate one new instance of \verb|PresentingQueryBasedSearchComp| for the new search pane. This new instance will potentially instantiate one or more instances of a different implementation of \verb|BaseSearchComponent| for each search result in that new pane. These instances are dubbed ``sub-searches'' and each will be constructed with a result from the new search pane and find the knowledgebase entries that are related via the specified ontological relationship. One such example of a \verb|BaseSearchComponent| ``sub-search'' is \verb|NonPresentingPathwaysContainingEntrySearchComp| which finds all pathways that contain a given entry. \verb|BaseSearchComponent| is also responsible for instantiating implementations of \verb|ISearchPresManager| and making calls to them with new search results as they are received and processed in ways described previously.
+
+\chapter{Results and Conclusions}
+The web app developed in this project can serve as a prototype for expanding on the set of features provided by Reactome's tools. The app allows for arbitrarily long chains of relational searches on Reactome's knowledgebase entries to be constructed by the user. Albeit, currently limited to a small selection of ontological relationships. It also implements some of the logic necessary to replicate existing low-level pathway diagrams using only API data. That is, without the need to reverse engineer HTML canvas contents from existing Reactome pathway diagram viewer pages, and then infer the presence of knowledgebase entries and their diagram positioning data.
+
+The app was not hosted on a public web-server and also did not rely on hosting a custom API for data needed by the app. In other words, cached content for queries to Reactome's APIs was client-side and not server-side. Despite this, the user interface is responsive and search retrieval is relatively quick, with no apparent cap on request frequency. This suggests that a more feature complete app would also not necessarily need a custom data API to achieve desirable performance and responsiveness.
+
+No full-featured web frameworks, UI frameworks, or combinations thereof, such as React.js or AngularJS, were used in development. These types of frameworks could have accelerated the development process had they been used, especially for apps with somewhat complex UI state logic like this one. Not using these frameworks served as an educational opportunity for what their benefits may be. Over the course of the development process, and as the complexity of the UI increased, the design patterns that emerged were motivated by the same technical challenges these frameworks specialize in addressing. One such challenge is the exchanging of data and callback functions between hierarchically-arranged UI logic components and furthermore the life-cycle of said components as they compute data, pass data up and down the hierarchy, and make changes to a browser's document object model (DOM) \cite{ReactJSMainConcepts}. The degree of this challenge was not initially anticipated.
+
+This prototype app also addresses many of the technical challenges that are involved with gathering the data for relational searches and reproducing pathway diagrams. It also  demonstrates the responsiveness that a web app can have despite the presence of many diagram elements and rapid sequences of tens of API calls.
+
+In conclusion, this project's prototype app demonstrates that the development of an app satisfying new use cases in the areas of relational searches and customized diagrams of Reactome's knowledgebase is an endeavor that can be realistically approached through a web app based solution without a significant need for a back-end API.
+
+\chapter{Limitation and Future Work}
+
+\section {App Usage Instructions}
+Usage instructions are important for software that reference domain-specific knowledge or other abstractions that are particular to that app's solution to design goals. An example of that in this project's app would be the concept of a relational filter in a search query. Using such software correctly is usually not intuitive, potentially unless the user has read about the motivation behind the features in a corresponding research paper or other resource. In order to remedy this need, the app could include general usage instructions accessible through buttons provided in the app's header section \todo{Update}, along with short relevant tooltips (in some cases in the form of an icon) present somewhere on many or most UI components.
+
+\section {General Set Operations Between Search Result Sets Instead of Chains of Intersections}
+One significant limitation of the app's search logic is the life cycle of the search logic component, \verb|BaseSearchComponent|. In this component, relational searches must be conceptualized as the intersection between the results of the current search's non-relational criteria, and the results of just one other high-level search which may itself involve sub-searches. This is the case because having more than one high-level search to intersect results with would require an algorithm to determine what order search components are evaluated. Furthermore, it is easy for the user lose track of which set of search panes are the originals, and which are the new ones that are implicitly using a sub-search as defined by the first set's choice of relational filter. A mechanism in the UI of differentiating these sets of panes was not implemented.
+
+A better design would not intertwine the displaying of search results and the combination of multiple search criteria in this way. One ambitious design will be roughly outlined. The user could have the ability to construct a directed acyclic graph (DAG) of search criteria. Each node contains a collapsible search pane that determines either some non-relational search criteria and/or some set operation on incoming result set(s). Each edge either simply forwards a result set from the outgoing to incoming nodes, or produces a new result set that represents entries meeting a specified ontological relationship with those entries from the outgoing node. Each edge also specifies whether one chosen or all results from the outgoing node are to be considered. An algorithm could transverse this DAG in such a way to only compute a node's result set when all of its incoming neighbors have already had theirs computed. Finally, for any node in this DAG, but especially those with no outgoing edges, the working search results can be viewed and interacted with. This interaction should still include the ability for entry results that are pathways to be displayed in the diagram viewport.
+
+\section {Searches Using Selected Diagram Elements}
+Pathways returned in search results may be displayed in the diagram viewport, but elements in the diagram viewport cannot be interacted with and do not influence searches. Because all elements in the diagram are knowledgebase entries, a set of selected diagram elements could be used by search mechanism components in a similar way as results from a set of search panes. This suggests that the usage of search pane results and selected diagram elements could in some way be interchangeable, if the search mechanism were refactored. Doing so would yield the potential to initiate a search based on selected diagram components.
+
+\section {A Full-Featured Diagram Editor}
+As discussed previously in chapter \ref{ch:Problem Description}, diagram customization may be a desirable feature. A feature in this area on the higher end of development complexity is a diagram editor. A diagram editor could allow the user to move diagram nodes around, add nodes into the diagram from search pane entry results, control the level of informational detail on each node, group nodes together for moving them around in a consolidated fashion, save the diagram state for later usage, or export that state in the same format as that provided by Reactome's API. This set of features would be a minimum in order to be considered a diagram editor for Reactome. Optional features may include customizing the styling of different diagram elements and creating new nodes from new entities with user-provided properties.
+
+\section {Using a Database in Addition to / Instead of the API}
+Reactome's Content Service API only allows for querying entries that are related to a given entry for a limited set of ontological relationships. To expand coverage for what kind of ontological relationships can be implemented as relational search filters, either Reactome's relational database or graph database could be leveraged in addition or instead of their Content Service API. This would, however, necessitate the creation of a custom server-side API for retrieving specific queries on a server-side hosted Reactome database.
+
+Reactome's graph database would provide several advantages over their relational database in the areas of query complexity and response times \cite{FabregatAntonio2018RgdE}. Furthermore, the translation of user -constructed relational search criteria into database queries would be more syntactically organic for a graph database than for a relational database, despite the name.
+
+\bibliographystyle{alpha}
+\bibliography{ReportBibliography}
+
+% which assumes a file foo.bib in your working directory.
+% The word ``Bibliography'' will appear in your document as soon as
+% you used ``bibtex'' on the command line.
+%
+
+\begin{appendices}
+%\chapter{Old Reactome Presentation}
+%\includepdf[page=-]{ReactomePres}
+
+\chapter{App Source Code}
+\label{ch:App Source Code}
+
+\section {Source Code Location}
+The Node project files for the web app constitute all code written in this project. They can be found at the Github Git repository:
+
+\noindent\url{https://github.com/kicknickr/reactome-search-vis-prototype}
+\section{Instructions on Building the Node Project}
+
+It is recommended that one be familiar with Node project structures and package.json files before attempting to build the source code into a functioning a web app.
+
+Building the project will require the Node and NPM applications to be installed on one's machine. Once installed, navigate to the top level directory of the project, and run the default package installation command:
+\begin{verbatim}
+npm install
+\end{verbatim}
+Followed by the customized build script:
+\begin{verbatim}
+npm run parcel-build --scripts-prepend-node-path=auto
+\end{verbatim}
+This will create a \verb|./build/output| directory containing html, js, and css files that can be opened in a browser. 
+
+If alternatively one wishes to run a dev server on the localhost domain that they can point their browser towards, then run the following customized dev server script:
+\begin{verbatim}
+npm run parcel-dev --scripts-prepend-node-path=auto
+\end{verbatim}
+and point their browser towards \url{http://localhost:1234/}.
+
+Please see an important note in the next section about a potential issue with opening the web app in either case.
+
+\section{Instructions on Opening the Web App}
+Opening a local web app is usually as simple as opening an index.html or localhost port in a browser of choice. While this is the final step, the browser must first be configured to allow local web apps to make requests to remote servers, such as the Reactome API. In some browsers, a web page making a remote request from a local origin is considered a CORS security risk and is blocked by default. If the app were hosted on an actual web-server and not run locally, this would not be a problem.
+
+A simple way to remove the restrictions imposed by this CORS security violation is to install a browser add-on that disables these restrictions. This technique was used during the development process. It should be noted that tampering with a browser's security settings should be done cautiously. To limit potential risks, one may wish to install/enable and uninstall/disable such an add-on before and after using the desired app.
+
+In the Firefox browser, the ``Cross Domain - CORS'' add-on works once it is turned on, without the need for additional configuration. To specify a whitelist of request origins for further risk reduction, the ``CORS Everywhere'' add-on also works. This second add-on was used during the development process while a dev server was running on localhost. The entry placed in add-on's whitelist for the development server was as follows: \verb|/^https?...localhost:1234.+/i|.
+
+Once a browser is configured properly, \verb|./build/output/index.html| may be opened in the browser to open the app developed in this project.
+\end{appendices}
+
+\end{document}
+
+
+
+
+
+
+
+
+

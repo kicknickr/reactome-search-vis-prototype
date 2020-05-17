@@ -8,7 +8,7 @@
     "build": "npm run jsdoc && npm run parcel-build",
     "parcel-dev": "parcel serve -d ./dist src/index.html --global main",
     "parcel-build": "parcel build -d build/ouput src/index.html --public-url ./",
-    "jsdoc": "rimraf ./docs/ && jsdoc -d ./docs -c ./jsdoc.json --verbose",
+    "jsdoc": "rimraf ./jsdocOutput/ && jsdoc -d ./jsdocOutput -c ./jsdoc.json --verbose",
     "eslint": "eslint 'src/**/*.js'"
   },
   "author": "Ryan Vereque",
