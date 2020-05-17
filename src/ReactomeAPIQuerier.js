@@ -1,5 +1,5 @@
-import request from "request-promise-native";
-
+// import request from "request-promise-native";
+import superagent from 'superagent';
 /** @typedef xy_
  * @property {number} x
  * @property {number} y
@@ -147,12 +147,7 @@ class ReactomeAPIQuerier {
      * @returns {Promise<object>}
      */
     static async getFacetTypes() {
-        const rqTemplate = request.defaults({
-            ...defaultJSONAPIOptions,
-            // Needs to use HTTPS if browser only fulfills HTTPS requests)
-            baseUrl: "https://reactome.org/ContentService/search/facet"
-        });
-        return await rqTemplate({uri: '/'})
+        return superagent.get("https://reactome.org/ContentService/search/facet").then(res => res.body)
     }
     /**
      * Gets all regular info associated with the a given DB entry.
@@ -229,23 +224,12 @@ class ReactomeAPIQuerier {
      * @returns {Promise<rawPathwayLayout_>}
      */
     static async getPathwayDiagramLayout(pathwayNameID) {
-        const rqTemplate = request.defaults({
-            ...defaultJSONAPIOptions,
-            // Needs to use HTTPS if browser only fulfills HTTPS requests)
-            baseUrl: "https://reactome.org/download/current/diagram/"
-        });
-        return await rqTemplate({uri: `${pathwayNameID}.json`})
+        return superagent.get(`https://reactome.org/download/current/diagram/${pathwayNameID}`).then(res => res.body)
     }
 
 
     static async getPathwayDiagramInfo(pathwayNameID) {
-        const rqTemplate = request.defaults({
-            ...defaultJSONAPIOptions,
-            // Needs to use HTTPS if browser only fulfills HTTPS requests)
-            baseUrl: "https://reactome.org/download/current/diagram/"
-        });
-
-        return await rqTemplate({uri: `${pathwayNameID}.graph.json`})
+        return superagent.get(`https://reactome.org/download/current/diagram/${pathwayNameID}.graph`).then(res => res.body)
     }
 
 
@@ -312,13 +296,5 @@ class ReactomeAPIQuerier {
     }
 
 }
-
-const defaultJSONAPIOptions = {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    json: true,
-};
 
 export default ReactomeAPIQuerier;

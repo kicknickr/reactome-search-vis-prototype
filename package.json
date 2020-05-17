@@ -15,15 +15,15 @@
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.9.6",
-    "material-components-web": "^5.1.0",
     "d3": "^5.16.0",
     "d3-array": "^2.4.0",
     "decko": "^1.2.0",
     "easypz": "^1.1.8",
     "fuse.js": "^3.6.1",
     "interactjs": "^1.9.13",
+    "material-components-web": "^5.1.0",
     "panzoom": "^9.2.4",
-    "request-promise-native": "^1.0.8",
+    "superagent": "^5.2.2",
     "throttle-debounce": "^2.1.0"
   },
   "devDependencies": {
