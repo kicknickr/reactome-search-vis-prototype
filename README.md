@@ -9,9 +9,9 @@ See \<TODO insert link?\> for the corresponding research paper written for this 
 A copy of the paper is archived for conveniance at [./ProjectDocsAndReferenceMaterial/ResearchPaperDocs](./ProjectDocsAndReferenceMaterial/ResearchPaperDocs)
 
 ## Quick Start Guide
-> :warning: **Important!**: Please see section [CORS Security Issues in Browsers - A workaround](#CORS-Fix) for a common issue with opening the web app.
+> :warning: **Important!**: Please see section [CORS Security Issues in Browsers - A workaround](#CORS-Fix) for a common issue with opening a local copy of the web app.
 
-A prebuilt version of the app can be accessed by opening [./build/output/index.html](./build/output/index.html) in the browser.
+A prebuilt version of the app can be accessed by opening [./build/index.html](./build/index.html) in the browser.
 ### Quick Build
 Assuming Node and NPM are installed on the machine and a terminal is open to the top level directory,
 here are the npm commands to build the project.
@@ -23,7 +23,7 @@ and then either
 ```bash
 npm run parcel-build --scripts-prepend-node-path=auto
 ```
-to build the project to html, js, and css files, located at [./build/output](./build/output)
+to build the project to html, js, and css files, located at [./build](./build), or
 <br><br>
 ```bash
 npm run parcel-dev --scripts-prepend-node-path=auto
@@ -50,7 +50,7 @@ To specify a whitelist of request origins for further risk reduction, the "CORS 
 This second add-on was used during the development process while a dev server was running on localhost.
 The entry placed in add-on's whitelist for the development server was as follows: `/^https?...localhost:1234.+/i`.
 
-Once a browser is configured properly, [./build/output/index.html](./build/output/index.html) or <http://localhost:1234/> may be opened in the browser to open the app developed in this project.
+Once a browser is configured properly, [./build/index.html](./build/index.html) or <http://localhost:1234/> may be opened in the browser to open the app developed in this project.
 ## Node scripts
 For a more complete list of node scripts located in package.json, see the following list and their descriptions.
 Note that running each script requires the command
@@ -59,7 +59,7 @@ npm run insert-script-of-choice --scripts-prepend-node-path=auto
 ```
 * eslint - Run project code linting using the eslint package
 * jsdoc - Generate JSDoc content for the project at [./jsdocOutput](./jsdocOutput), but first remove old docs. Note that project documentation is not entirely complete.
-* parcel-build - Parcel will bundle project assets, and output them to [./build/output](./build/output)
+* parcel-build - Parcel will bundle project assets, and output them to [./build](./build)
 * parcel-dev - Parcel will bundle project assets, then serve them on <http://localhost:1234/> with Hot Module Replacement (HMR)
 * build - jsdoc script ; parcel-build script
 * dev - jsdoc script ; parcel-dev script
