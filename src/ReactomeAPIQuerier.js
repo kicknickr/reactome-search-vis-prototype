@@ -157,12 +157,7 @@ class ReactomeAPIQuerier {
      * @returns {Promise<object>}
      */
     static async getDBEntryInfoRegular(databaseEntryID) {
-        const rqTemplate = request.defaults({
-            ...defaultJSONAPIOptions,
-            // Needs to use HTTPS if browser only fulfills HTTPS requests)
-            baseUrl: "https://reactome.org/ContentService/data/query/"
-        });
-        return await rqTemplate({uri: databaseEntryID})
+        return superagent.get(`https://reactome.org/ContentService/data/query/${databaseEntryID}`, options).then(res => res.body)
     }
 
     /**
@@ -178,11 +173,6 @@ class ReactomeAPIQuerier {
      * @returns {Promise<*>}
      */
     static async getEntrySearchResults(queryString, speciesSet, typeSet, compartmentSet, keywordSet) {
-        const rqTemplate = request.defaults({
-            ...defaultJSONAPIOptions,
-            // Needs to use HTTPS if browser only fulfills HTTPS requests)
-            baseUrl: "https://reactome.org/ContentService/search/query"
-        });
         const maxRowsReturned = 100;
         const options = {
             cluster: false,
@@ -196,9 +186,8 @@ class ReactomeAPIQuerier {
         if (keywordSet) options.keywords = [...keywordSet].toString();
         if (speciesSet) options.species = [...speciesSet].toString();
         console.log(options);
-        const a = await rqTemplate({qs: options, uri: ""});
-        console.log(a);
-        return a;
+
+        return superagent.get("https://reactome.org/ContentService/search/query", options).then(res => res.body)
     }
 
     /**
@@ -210,12 +199,7 @@ class ReactomeAPIQuerier {
      * @param {string} databaseEntryID - either a stableID or dbID from the reactome knowledge base
      */
     static async getLLDPathwaysContainingEntry(databaseEntryID) {
-        const rqTemplate = request.defaults({
-            ...defaultJSONAPIOptions,
-            // Needs to use HTTPS if browser only fulfills HTTPS requests)
-            baseUrl: "https://reactome.org/ContentService/data/pathways/low/diagram/entity/"
-        });
-        return rqTemplate({uri: databaseEntryID})
+        return superagent.get("https://reactome.org/ContentService/data/pathways/low/diagram/entity/").then(res => res.body)
     }
 
     /**
@@ -224,22 +208,31 @@ class ReactomeAPIQuerier {
      * @returns {Promise<rawPathwayLayout_>}
      */
     static async getPathwayDiagramLayout(pathwayNameID) {
-        return superagent.get(`https://reactome.org/download/current/diagram/${pathwayNameID}`).then(res => res.body)
+        return superagent.get(`https://reactome.org/download/current/diagram/${pathwayNameID}`).then(res => res.body).catch( (error) =>
+            {
+                if (error.status === 404) {
+                    return null;
+                }
+                else console.log(error);
+            }
+        )
     }
 
 
     static async getPathwayDiagramInfo(pathwayNameID) {
-        return superagent.get(`https://reactome.org/download/current/diagram/${pathwayNameID}.graph`).then(res => res.body)
+        return superagent.get(`https://reactome.org/download/current/diagram/${pathwayNameID}.graph`).then(res => res.body).catch( (error) =>
+            {
+                if (error.status === 404) {
+                    return null;
+                }
+                else console.log(error);
+            }
+        )
     }
 
 
     static async getHumanPathwayHierarchy() {
-        const rqTemplate = request.defaults({
-            ...defaultJSONAPIOptions,
-            // Needs to use HTTPS if browser only fulfills HTTPS requests)
-            baseUrl: "https://reactome.org/ContentService/data/eventsHierarchy/9606"
-        });
-        return await rqTemplate({uri: '/'})
+        return superagent.get("https://reactome.org/ContentService/data/eventsHierarchy/9606").then(res => res.body)
     }
 
     /**
@@ -251,14 +244,9 @@ class ReactomeAPIQuerier {
      * @returns {Promise<{stId: string}>}
      */
     static async getPathwaysHavingDiagContainingEntry(dbEntryId, speciesSet) {
-        const rqTemplate = request.defaults({
-            ...defaultJSONAPIOptions,
-            // Needs to use HTTPS if browser only fulfills HTTPS requests)
-            baseUrl: "https://reactome.org/ContentService/data/pathways/low/diagram/entity/"
-        });
         const options = {};
         if (speciesSet) options.species = [...speciesSet].toString();
-        return await rqTemplate({qs: options, uri: dbEntryId}).catch((error) => {
+        return await superagent.get("https://reactome.org/ContentService/data/pathways/low/diagram/entity/", options).then(res => res.body).catch((error) => {
             if (error.error.code === 404) {
                 if (error.response.body.messages[0].startsWith("No result for")) {
                     return [];
@@ -278,13 +266,8 @@ class ReactomeAPIQuerier {
      * @returns {Promise<{stId: string}>}
      */
     static async getEntitiesWithinComplex(dbEntryId, excludeStructures) {
-        const rqTemplate = request.defaults({
-            ...defaultJSONAPIOptions,
-            // Needs to use HTTPS if browser only fulfills HTTPS requests)
-            baseUrl: 'https://reactome.org/ContentService/data/complex/'
-        });
-        return await rqTemplate({qs: {excludeStructures}, uri: `${dbEntryId}/subunits`}).catch((error) => {
-            if (error.error.code === 404) {
+        return await superagent.get("https://reactome.org/ContentService/data/complex/", options).then(res => res.body).catch((error) => {
+            if (error.status === 404) {
                 const errorMessage = error.response.body.messages[0];
                 if (errorMessage.startsWith("No result for") || errorMessage.endsWith("has not been found in the System")) {
                     return [];

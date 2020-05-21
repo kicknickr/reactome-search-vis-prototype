@@ -12,6 +12,8 @@ A copy of the paper is archived for conveniance at [./ProjectDocsAndReferenceMat
 <!--
 > :warning: **Important!**: Please see section [CORS Security Issues in Browsers - A workaround](#CORS-Fix) for a common issue with opening a local copy of the web app.
 -->
+This app is hosted publically on the repository's [GitHub Pages](https://kicknickr.github.io/reactome-search-vis-prototype/).
+
 A prebuilt version of the app can be accessed by opening [./build/index.html](./build/index.html) in the browser.
 ### Quick Build
 Assuming Node and NPM are installed on the machine and a terminal is open to the top level directory,
